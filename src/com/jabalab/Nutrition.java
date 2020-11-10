@@ -72,6 +72,14 @@ public class Nutrition {
         meat.remove(i-1);
     }
 
+    public ArrayList<Meat> getMeat() {
+        return meat;
+    }
+
+    public ArrayList<Water> getWater() {
+        return bottles;
+    }
+
     public String info(){
         return bottles.size() + " bottles " + meat.size() + " meat pieces";
     }
