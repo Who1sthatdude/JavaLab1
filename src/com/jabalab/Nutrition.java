@@ -6,7 +6,7 @@ public class Nutrition {
     private ArrayList<Meat> meat;
     private ArrayList<Water> bottles;
 
-    public static class Meat{
+    public static class Meat implements Eatable{
         private double caloriesRestored;
         private StringBuffer type;
         private double weight;
@@ -18,16 +18,19 @@ public class Nutrition {
             caloriesRestored = weight * 2400;
         }
 
-        public void use(){
+        public void use(String type){
             System.out.println("meat piece was consumed");
         }
 
+        public void use(int i){
+            System.out.println("Meat piece number " + i + " was used and now is empty");
+        }
         public void getInfo(){
             System.out.println(caloriesRestored + " calories were restored");
         }
     }
 
-    public static class Water{
+    public static class Water implements Eatable{
         private double capacity;
         private double hydrationRestored;
         private boolean isClean;
@@ -43,6 +46,12 @@ public class Nutrition {
             this.isClean = isClean;
         }
 
+        @Override
+        public void use(String type){
+            System.out.println("The water was drank");
+        }
+
+        @Override
         public void use(int i){
             System.out.println("bottle number " + i + " was used and now is empty");
         }
@@ -67,7 +76,7 @@ public class Nutrition {
     }
 
     public void eat(int i){
-        meat.get(i-1).use();
+        meat.get(i-1).use("meat");
         meat.get(i-1).getInfo();
         meat.remove(i-1);
     }
