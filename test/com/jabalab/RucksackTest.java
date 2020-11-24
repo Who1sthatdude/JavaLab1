@@ -9,38 +9,32 @@ import org.mockito.Mockito;
 
 public class RucksackTest {
     @Test
-    public void takeToolTest(){
-        Axe axeMock = Mockito.mock(Axe.class);
+    public void testGetTool(){
+        Tool toolMock = Mockito.mock(Axe.class);
+        String str = "Axe";
+        Mockito.when(toolMock.getType()).thenReturn(str);
         Rucksack obj = new Rucksack();
-        Exception exception = Assertions.assertThrows(MyException.class, () -> {
-            obj.takeTool(axeMock, "axe");
-        });
-    }
-
-    @Test
-    public void takeWaterTest(){
-        Nutrition.Water waterMock = Mockito.mock(Nutrition.Water.class);
-        Rucksack obj = new Rucksack();
-        Nutrition objToCompare = new Nutrition(waterMock);
         try {
-            obj.takeWater(waterMock);
-        } catch(Exception e){
+            obj.takeTool(toolMock, str);
+        }catch (MyException e){
             e.printStackTrace();
         }
-        Assert.assertEquals(obj.getFood().getWater(), objToCompare.getWater());
+        Assertions.assertEquals(obj.getTool(str).getType(), str);
+        Mockito.verify(toolMock).getType();
     }
 
     @Test
-    public void takeMeatTest(){
+    public void testGetFood(){
         Nutrition.Meat meatMock = Mockito.mock(Nutrition.Meat.class);
+        Mockito.when(meatMock.getWeight()).thenReturn(1.0);
         Rucksack obj = new Rucksack();
-        Nutrition objToCompare = new Nutrition(meatMock);
-        try {
+        try{
             obj.takeMeat(meatMock);
-        } catch(Exception e){
+        }catch (MyException e){
             e.printStackTrace();
         }
-        Assert.assertEquals(obj.getFood().getMeat(), objToCompare.getMeat());
+        Assertions.assertEquals(obj.getFood().getMeat(0).getWeight(), 1.0);
+        Mockito.verify(meatMock).getWeight();
     }
 
 }

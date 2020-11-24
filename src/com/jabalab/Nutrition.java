@@ -25,8 +25,13 @@ public class Nutrition {
         public void use(int i){
             System.out.println("Meat piece number " + i + " was used and now is empty");
         }
+
         public void getInfo(){
             System.out.println(caloriesRestored + " calories were restored");
+        }
+
+        public double getWeight(){
+            return weight;
         }
     }
 
@@ -44,6 +49,10 @@ public class Nutrition {
             this.capacity = capacity;
             hydrationRestored = capacity * 0.65;
             this.isClean = isClean;
+        }
+
+        public double getCapacity(){
+            return capacity;
         }
 
         @Override
@@ -91,12 +100,12 @@ public class Nutrition {
         meat.remove(i-1);
     }
 
-    public ArrayList<Meat> getMeat() {
-        return meat;
+    public Meat getMeat(int i) {
+        return meat.get(i);
     }
 
-    public ArrayList<Water> getWater() {
-        return bottles;
+    public Water getWater(int i) {
+        return bottles.get(i);
     }
 
     public String info(){

@@ -27,6 +27,10 @@ public abstract class Tool {
         return this;
     }
 
+    public String getType(){
+        return type;
+    }
+
     @Override
     public String toString(){
         return type;
