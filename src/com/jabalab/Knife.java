@@ -9,6 +9,7 @@ public class Knife extends Tool {
         this.size = size;
         weight = 0.7 * size.getValue();
         damage = size.getValue() * 5;
+        this.condition = condition;
     }
 
     @Override

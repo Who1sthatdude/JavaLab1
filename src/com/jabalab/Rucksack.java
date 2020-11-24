@@ -13,28 +13,43 @@ public class Rucksack {
         tools = new HashMap<String, Tool>();
         for(String item : contains){
             try {
-                take(item);
+                if(item.equals("Axe")) {
+                    takeTool(new Axe(Size.Large, 100), item);
+                }else if(item.equals("Knife")){
+                    takeTool(new Knife(Size.Medium, 100), item);
+                }else if(item.equals("Water")){
+                    takeWater(new Nutrition.Water(1));
+                }else if(item.equals("Meat")){
+                    takeMeat(new Nutrition.Meat("fried", 1));
+                }
             } catch (MyException e){
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public void take(String item) throws MyException{
-        if(item.equals("Axe")){
-            tools.put("Axe", new Axe(Size.Medium, 100));
+    public void takeTool(Tool item, String name) throws MyException{
+        if(item != null) {
+            tools.put(name, item);
         }
-        else if (item.equals("Knife")){
-            tools.put("Knife", new Knife(Size.Medium, 100));
-        }
-        else if (item.equals("Water")){
-            food.take(new Nutrition.Water(0.5));
-        }
-        else if (item.equals("Meat")){
-            food.take(new Nutrition.Meat("fried", 0.325));
-        }
-        else{
+        else {
             throw new MyException("You are trying to get an item that doesn't exist");
+        }
+    }
+
+    public void takeMeat(Nutrition.Meat item) throws MyException{
+        if(item != null) {
+            food.take(item);
+        }else{
+            throw new MyException("You are trying to put an item that is null");
+        }
+    }
+
+    public void takeWater(Nutrition.Water item) throws MyException{
+        if(item != null) {
+            food.take(item);
+        }else{
+            throw new MyException("You are trying to put an item that is null");
         }
     }
 
@@ -48,6 +63,10 @@ public class Rucksack {
 
     public void eat(int i){
         food.eat(i);
+    }
+
+    public Nutrition getFood(){
+        return food;
     }
 
     public void whatDoIHave(){

@@ -61,6 +61,16 @@ public class Nutrition {
         meat = new ArrayList<Meat>();
         bottles = new ArrayList<Water>();
     }
+    public Nutrition(Meat obj){
+        meat =  new ArrayList<Meat>();
+        meat.add(obj);
+        bottles = new ArrayList<Water>();
+    }
+    public Nutrition(Water obj){
+        meat =  new ArrayList<Meat>();
+        bottles = new ArrayList<Water>();
+        bottles.add(obj);
+    }
 
     public void take(Water bottle){
         bottles.add(bottle);

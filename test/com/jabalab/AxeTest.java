@@ -20,4 +20,11 @@ public class AxeTest {
         Assert.assertEquals(obj1, obj2);
     }
 
+    @Test
+    public void axeTestRepair(){
+        Tool obj = new Axe(Size.Large, 47);
+        obj.repair();
+        Assert.assertEquals(obj, new Axe(Size.Large, 97));
+    }
+
 }
