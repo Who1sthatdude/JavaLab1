@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 
 public class RucksackTest {
     @Test
-    public void testGetTool(){
+    public void getTool_isUsed_True(){
         Tool toolMock = Mockito.mock(Axe.class);
         String str = "Axe";
         Mockito.when(toolMock.getType()).thenReturn(str);
@@ -23,8 +23,9 @@ public class RucksackTest {
         Mockito.verify(toolMock).getType();
     }
 
+
     @Test
-    public void testGetFood(){
+    public void getFood_isUsed_True(){
         Nutrition.Meat meatMock = Mockito.mock(Nutrition.Meat.class);
         Mockito.when(meatMock.getWeight()).thenReturn(1.0);
         Rucksack obj = new Rucksack();
