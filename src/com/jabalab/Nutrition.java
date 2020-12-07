@@ -18,6 +18,14 @@ public class Nutrition {
             caloriesRestored = weight * 2400;
         }
 
+        public double getCaloriesRestored() {
+            return caloriesRestored;
+        }
+
+        public String getType(){
+            return type.toString();
+        }
+
         public void use(String type){
             System.out.println("meat piece was consumed");
         }
@@ -32,6 +40,11 @@ public class Nutrition {
 
         public double getWeight(){
             return weight;
+        }
+
+        @Override
+        public String toString() {
+            return "Calories restored: "+ caloriesRestored + " " + type + " weight: " + weight;
         }
     }
 
@@ -53,6 +66,14 @@ public class Nutrition {
 
         public double getCapacity(){
             return capacity;
+        }
+
+        public double getHydrationRestored(){
+            return hydrationRestored;
+        }
+
+        public boolean getIsClean(){
+            return isClean;
         }
 
         @Override
@@ -100,12 +121,20 @@ public class Nutrition {
         meat.remove(i-1);
     }
 
-    public Meat getMeat(int i) {
+    public Meat getMeatPiece(int i) {
         return meat.get(i);
     }
 
-    public Water getWater(int i) {
+    public Water getWaterBottle(int i) {
         return bottles.get(i);
+    }
+
+    public ArrayList<Meat> getMeat(){
+        return meat;
+    }
+
+    public ArrayList<Water> getBottles(){
+        return bottles;
     }
 
     public String info(){

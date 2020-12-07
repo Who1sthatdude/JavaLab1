@@ -2,7 +2,6 @@ package com.jabalab;
 
 
 import org.junit.Test;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 
@@ -34,7 +33,7 @@ public class RucksackTest {
         }catch (MyException e){
             e.printStackTrace();
         }
-        Assertions.assertEquals(obj.getFood().getMeat(0).getWeight(), 1.0);
+        Assertions.assertEquals(obj.getFood().getMeatPiece(0).getWeight(), 1.0);
         Mockito.verify(meatMock).getWeight();
     }
 
