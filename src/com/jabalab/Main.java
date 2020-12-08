@@ -57,6 +57,10 @@ public class Main {
         System.out.println("Average calories restored: " +
                 storage.getFood().getMeat().stream().mapToDouble(Nutrition.Meat::getCaloriesRestored).average().getAsDouble());
 
+        ArrayList<Rucksack> bags = new ArrayList<Rucksack>();
+        bags.add(storage);
+        System.out.println("Total calories restored: " + bags.stream().flatMap(bag -> bag.getFood().getMeat().stream())
+                .mapToDouble(piece -> piece.getCaloriesRestored()).reduce(0, Double::sum));
 
     }
 
