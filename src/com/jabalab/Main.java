@@ -4,6 +4,9 @@ package com.jabalab;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -41,14 +44,17 @@ public class Main {
         }
         System.out.println("\nWeight of meat:");
 
-        ArrayList<Nutrition.Meat> fried = new ArrayList<Nutrition.Meat>();
-        ArrayList<Nutrition.Meat> raw = new ArrayList<Nutrition.Meat>();
+//        ArrayList<Nutrition.Meat> fried = new ArrayList<Nutrition.Meat>();
+//        ArrayList<Nutrition.Meat> raw = new ArrayList<Nutrition.Meat>();
 
-        storage.getFood().getMeat().stream().filter(item -> item.getType().equals("fried meat")?fried.add(item):raw.add(item))
-                .forEach(item -> System.out.println(item.getWeight()));
+      Map<String, List<Nutrition.Meat>> result = storage.getFood().getMeat()
+                .stream()
+                .collect(Collectors.groupingBy(item -> item.getType().equals("fried meat") ? "fried" : "raw"));
+        System.out.println("Fried meat: " + result.get("fried"));
+        System.out.println("Raw meat: " + result.get("raw"));
 
-        printMeatArray(fried);
-        printMeatArray(raw);
+        storage.getFood().getMeat().stream().forEach(item -> System.out.println(item.getWeight()));
+
 
         double max = storage.getFood().getMeat().stream().max(Comparator.comparing(Nutrition.Meat::getCaloriesRestored))
                 .get().getCaloriesRestored();
