@@ -1,6 +1,7 @@
 package com.jabalab;
 
 
+import com.jabalab.*;
 import org.junit.Test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;

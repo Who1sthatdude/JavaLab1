@@ -1,5 +1,8 @@
 package com.jabalab;
 
+import com.jabalab.Knife;
+import com.jabalab.Size;
+import com.jabalab.Tool;
 import org.junit.Assert;
 import org.junit.Test;
 
