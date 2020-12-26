@@ -28,6 +28,10 @@ public class Rucksack {
         }
     }
 
+    public Rucksack(HashMap<String, Tool> tools) {
+        this.tools = tools;
+    }
+
     public void takeTool(Tool item, String name) throws MyException{
         if(item != null) {
             tools.put(name, item);
